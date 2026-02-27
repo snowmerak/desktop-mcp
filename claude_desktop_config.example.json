@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "pag": {
+      "command": "uvx",
+      "args": ["--from", "git+https://github.com/snowmerak/desktop-mcp", "mcp_server"]
+    }
+  }
+}

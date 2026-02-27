@@ -1,0 +1,7 @@
+{
+  "id": "b7f9f5a6-c57c-4d01-a28d-403341648ed0",
+  "name": "크롬을 열고 www.sooplive.co.kr로 접근해서 라이브 중인 방",
+  "nl_command": "크롬을 열고 www.sooplive.co.kr로 접근해서 라이브 중인 방송 몇개 타이틀을 읽어와줘.",
+  "code": "def run():\n    open_app(\"Google Chrome\")\n    wait_until(\"the browser is ready and address bar is visible\", capture_screenshot)\n    \n    click_on(\"address bar\")\n    hotkey(\"command\", \"a\")  # macOS\n    type_text(\"www.sooplive.co.kr\")\n    press(\"enter\")\n    \n    wait_until(\"the Soop Live homepage is loaded and live broadcast thumbnails are visible\", capture_screenshot)\n    \n    screenshot_path = capture_screenshot()\n    titles = read_text_from_screen(screenshot_path, \"all visible live broadcast titles on the page\")\n    \n    print(titles)\n\nrun()",
+  "created_at": "2026-02-27T17:06:36.702829"
+}

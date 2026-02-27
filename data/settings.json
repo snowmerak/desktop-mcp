@@ -1,0 +1,4 @@
+{
+  "api_url": "http://localhost:1234",
+  "model": "qwen3-vl-reap-24b-a3b"
+}

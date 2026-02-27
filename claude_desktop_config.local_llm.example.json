@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "pag": {
+      "command": "uvx",
+      "args": ["--from", "git+https://github.com/snowmerak/desktop-mcp", "mcp_server"],
+      "env": {
+        "PAG_API_URL": "http://localhost:1234/v1/chat/completions",
+        "PAG_MODEL": "your-multimodal-model-name",
+        "PAG_API_KEY": "your-api-key-if-required"
+      }
+    }
+  }
+}
