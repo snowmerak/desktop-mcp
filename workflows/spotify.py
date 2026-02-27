@@ -1,3 +1,5 @@
+import os
+import tempfile
 import urllib.parse
 import time
 import pyautogui
@@ -19,7 +21,7 @@ def search_and_add_to_playlist(query):
 
     # 2. 스크린샷 캡처
     print("화면 캡처 중...")
-    screenshot_path = capture_screenshot("/tmp/spotify_screenshot.png")
+    screenshot_path = capture_screenshot(os.path.join(tempfile.gettempdir(), "spotify_screenshot.png"))
 
     # 3. LLM으로 첫 번째 곡 좌표 분석
     print("LLM에게 첫 번째 곡 좌표 분석 요청 중...")

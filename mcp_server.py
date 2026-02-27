@@ -23,12 +23,13 @@ import base64
 import json
 import os
 import sys
+import tempfile
 import time
 from pathlib import Path
 
 import mcp.server.stdio
 import mcp.types as types
-from mcp.server import Server
+from mcp.server import Server, NotificationOptions
 from mcp.server.models import InitializationOptions
 
 # 프로젝트 루트를 sys.path에 추가
@@ -47,14 +48,15 @@ from utils.llm import (
     extract_structured_data,
     wait_until,
     fetch_models,
+)
+from utils.image import (
+    encode_image_to_base64,
     mark_region_on_image,
 )
-from utils.image import encode_image_to_base64
-
 
 server = Server("pag")
 
-SCREENSHOT_PATH = "/tmp/pag_mcp_screenshot.png"
+SCREENSHOT_PATH = os.path.join(tempfile.gettempdir(), "pag_mcp_screenshot.png")
 
 
 def _image_content(image_path: str) -> list:
@@ -515,7 +517,7 @@ async def main():
                 server_name="pag",
                 server_version="0.1.0",
                 capabilities=server.get_capabilities(
-                    notification_options=None,
+                    notification_options=NotificationOptions(),
                     experimental_capabilities={},
                 ),
             ),

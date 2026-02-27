@@ -1,3 +1,5 @@
+import os
+import tempfile
 import subprocess
 import shutil
 from PIL import ImageGrab
@@ -20,7 +22,7 @@ def open_app(app_name_or_path):
             raise FileNotFoundError(f"앱을 찾을 수 없습니다: {app_name_or_path}")
 
 
-def capture_screenshot(path="/tmp/screenshot.png"):
+def capture_screenshot(path=os.path.join(tempfile.gettempdir(), "screenshot.png")):
     """현재 화면을 캡처하여 지정된 경로에 저장합니다."""
     img = ImageGrab.grab()
     img.save(path)

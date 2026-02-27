@@ -1,11 +1,15 @@
+import os
+import tempfile
 import pyautogui
 
 from utils.platform import capture_screenshot
 from utils.llm import get_coordinates_from_image, wait_until
 from utils.input import normalized_to_screen, move_to, drag
 
+_TMP = tempfile.gettempdir()
 
-def click_on(description, screenshot_path="/tmp/action_screenshot.png", double=False, right=False):
+
+def click_on(description, screenshot_path=os.path.join(tempfile.gettempdir(), "action_screenshot.png"), double=False, right=False):
     """
     화면에서 자연어로 설명된 UI 요소를 찾아 클릭합니다.
 
@@ -39,17 +43,17 @@ def click_on(description, screenshot_path="/tmp/action_screenshot.png", double=F
     return (x, y)
 
 
-def double_click_on(description, screenshot_path="/tmp/action_screenshot.png"):
+def double_click_on(description, screenshot_path=os.path.join(tempfile.gettempdir(), "action_screenshot.png")):
     """화면에서 자연어로 설명된 UI 요소를 찾아 더블클릭합니다."""
     return click_on(description, screenshot_path, double=True)
 
 
-def right_click_on(description, screenshot_path="/tmp/action_screenshot.png"):
+def right_click_on(description, screenshot_path=os.path.join(tempfile.gettempdir(), "action_screenshot.png")):
     """화면에서 자연어로 설명된 UI 요소를 찾아 우클릭합니다."""
     return click_on(description, screenshot_path, right=True)
 
 
-def hover_on(description, screenshot_path="/tmp/action_screenshot.png"):
+def hover_on(description, screenshot_path=os.path.join(tempfile.gettempdir(), "action_screenshot.png")):
     """
     화면에서 자연어로 설명된 UI 요소 위로 커서를 이동합니다 (클릭 없음).
     드롭다운 열기, 툴팁 확인 등에 유용합니다.
@@ -105,7 +109,7 @@ def wait_and_click(
 def drag_from_to(
     from_description,
     to_description,
-    screenshot_path="/tmp/action_screenshot.png",
+    screenshot_path=os.path.join(tempfile.gettempdir(), "action_screenshot.png"),
     duration=0.5,
 ):
     """

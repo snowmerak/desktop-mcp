@@ -1,4 +1,6 @@
 import json
+import os
+import tempfile
 import urllib.request
 import urllib.error
 
@@ -180,7 +182,7 @@ def check_condition_from_image(
 def wait_until(
     condition_description,
     capture_fn,
-    screenshot_path="/tmp/wait_screenshot.png",
+    screenshot_path=os.path.join(tempfile.gettempdir(), "wait_screenshot.png"),
     interval=1.0,
     timeout=30.0,
     api_url=None,

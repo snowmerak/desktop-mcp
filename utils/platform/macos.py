@@ -1,3 +1,5 @@
+import os
+import tempfile
 import subprocess
 
 
@@ -11,7 +13,7 @@ def open_app(app_name_or_path):
     subprocess.run(["open", "-a", app_name_or_path])
 
 
-def capture_screenshot(path="/tmp/screenshot.png"):
+def capture_screenshot(path=os.path.join(tempfile.gettempdir(), "screenshot.png")):
     """현재 화면을 캡처하여 지정된 경로에 저장합니다."""
     subprocess.run(["screencapture", "-x", path])
     return path
