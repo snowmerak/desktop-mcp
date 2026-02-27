@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "A vision-powered desktop automation library and MCP server. Control any GUI app using natural language via local or remote multimodal LLMs."
 readme = "README.md"
 requires-python = ">=3.12"
-license = { text = "MIT" }
+license = "MIT"
 keywords = ["mcp", "automation", "desktop", "gui", "vision", "llm", "pyautogui"]
 classifiers = [
     "Programming Language :: Python :: 3",
@@ -28,3 +28,9 @@ mcp_server = "mcp_server:main_sync"
 
 [project.urls]
 Repository = "https://github.com/snowmerak/desktop-mcp"
+
+[tool.setuptools.packages.find]
+include = ["utils*", "workflows*"]
+
+[tool.setuptools]
+py-modules = ["mcp_server"]
